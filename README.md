@@ -17,7 +17,11 @@
 
 > TODO: 
 > add `{"registry-mirrors": ["http://localhost:5000"]}`
-> to /etc/docker/daemon.json file for pull without need to write `localhost:5000` before image
+> to `/etc/docker/daemon.json` file for pull without need to write `localhost:5000` before image
+
+> instead of `localhost` you should consider your ip in private network.
+> and add also `"insecure-registries": ["192.168.1.103:5000"]` to the `daemon.json` file.
+> ***you should restart your docker after new configs***
 
 
 
@@ -46,7 +50,6 @@
 - add image to registry:
     ```bash
     sudo docker tag <image-name> <your-registry-address>/<image-name>
-    sudo docker rmi <image-name> -f
     sudo docker push <your-registry-address>/<image-name>
     ```
 
@@ -58,4 +61,7 @@
 - remove all docker containers:
     ```bash
     sudo docker rm -vf $(sudo docker ps -aq)
-    ```# docker-portable
+    ```
+    ```
+    sudo docker container prune 
+    ```

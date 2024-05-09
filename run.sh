@@ -7,7 +7,7 @@ echo "Lesse Abow"
 sudo docker load -i registry-image.tar
 
 # run docker from prepared volume
-sudo docker run --rm -v ./regvol:/var/lib/registry --name hooshanreg -p 5000:5000 registry
+sudo docker run --rm -v ./regvol:/var/lib/registry --restart=always --name hooshanreg -p 5000:5000 registry
 
 
 
