@@ -3,26 +3,27 @@
 ## How to use?
 
 1. `docker` should be installed on machine.
-2. run in terminal:
+2. edit docker config files (`/etc/docker/daemon.json`) in host machine and client machine:
+    ```json
+    {
+        "experimental": false,
+        "insecure-registries": ["localhost:5000"]
+    }
+    ```
+4. run in terminal:
     ```bash
     sudo chmod u+x run.sh
     ./run.sh
     ```
-3. go to `http://localhost:5000/v2/_catalog` to see available images.
-4. how to pull image:
+5. go to `http://localhost:5000/v2/_catalog` to see available images.
+6. how to pull image:
     ```bash
     sudo docker pull localhost:5000/<image-name>
     ```
-5. it's done!
-
-> TODO: 
-> add `{"registry-mirrors": ["http://localhost:5000"]}`
-> to `/etc/docker/daemon.json` file for pull without need to write `localhost:5000` before image
+7. it's done!
 
 > instead of `localhost` you should consider your ip in private network.
-> and add also `"insecure-registries": ["192.168.1.103:5000"]` to the `daemon.json` file.
-> ***you should restart your docker after new configs***
-
+> ***you should restart your docker after new configs***.
 
 
 ## Docs
